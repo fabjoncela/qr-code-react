@@ -78,6 +78,12 @@ img {
   background-color: #5a2d91;
 }
 
+.error {
+  color: red;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
 /* Media Queries for Mobile Responsiveness */
 @media (max-width: 768px) {
   h1 {

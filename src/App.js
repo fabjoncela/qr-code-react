@@ -5,7 +5,10 @@ import './App.css';
 
 function App() {
   const [url, setUrl] = useState('');
+  const [inputValue, setInputValue] = useState('');
   const [qrCodeUrl, setQrCodeUrl] = useState('');
+  const [timer, setTimer] = useState(null);
+  const [error, setError] = useState('');
 
   useEffect(() => {
     if (url) {
@@ -22,7 +25,24 @@ function App() {
   }, [url]);
 
   const handleInputChange = (e) => {
-    setUrl(e.target.value);
+    const value = e.target.value;
+    setInputValue(value);
+
+    if (timer) {
+      clearTimeout(timer);
+    }
+
+    if (value.includes('.')) {
+      const newTimer = setTimeout(() => {
+        if (value.includes('.com') || value.includes('.net') || value.includes('.org')) {
+          setUrl(value);
+          setError('');
+        } else {
+          setError('Invalid URL');
+        }
+      }, 1000);
+      setTimer(newTimer);
+    }
   };
 
   const handleDownload = () => {
@@ -42,10 +62,11 @@ function App() {
       <h1>QR Code Generator</h1>
       <input
         type="text"
-        placeholder="Enter URL here"
-        value={url}
+        placeholder="URL here ex: google.com"
+        value={inputValue}
         onChange={handleInputChange}
       />
+      {error && <p className="error">{error}</p>}
       {qrCodeUrl && (
         <div>
           <h2>QR Code:</h2>
