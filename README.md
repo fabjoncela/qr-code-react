@@ -1,4 +1,4 @@
-# Delpoyed at: https://66acef3d8362b3651a52e15f--splendid-longma-84864a.netlify.app/
+# Delpoyed at: https://66acf7f381aaf60008033492--splendid-longma-84864a.netlify.app/
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
