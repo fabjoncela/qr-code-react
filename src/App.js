@@ -1,23 +1,30 @@
-import logo from './logo.svg';
+// src/App.js
+import React, { useState } from 'react';
+import QRCode from 'qrcode.react';
 import './App.css';
 
 function App() {
+  const [url, setUrl] = useState('');
+
+  const handleInputChange = (e) => {
+    setUrl(e.target.value);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>QR Code Generator</h1>
+      <input
+        type="text"
+        placeholder="Enter URL here"
+        value={url}
+        onChange={handleInputChange}
+      />
+      {url && (
+        <div>
+          <h2>QR Code:</h2>
+          <QRCode value={url} />
+        </div>
+      )}
     </div>
   );
 }
