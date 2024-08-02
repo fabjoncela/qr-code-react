@@ -34,7 +34,7 @@ function App() {
 
     if (value.includes('.')) {
       const newTimer = setTimeout(() => {
-        if (value.includes('.com') || value.includes('.net') || value.includes('.org')) {
+        if (value.includes('.com') || value.includes('.net') || value.includes('.')) {
           setUrl(value);
           setError('');
         } else {
